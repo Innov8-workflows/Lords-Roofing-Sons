@@ -345,7 +345,7 @@ footer{background:var(--charcoal);color:rgba(255,255,255,.66);padding:64px 0 0;f
 /* ===================== PROJECT SHOWCASE (video) ===================== */
 .showcase{display:grid;grid-template-columns:1.12fr .88fr;gap:44px;align-items:center}
 .showcase-video{position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-lg);background:#111;line-height:0}
-.showcase-video video{width:100%;height:auto;display:block}
+.showcase-video video{width:100%;height:auto;display:block;pointer-events:none}
 .sc-chip{position:absolute;top:14px;left:14px;z-index:2;display:flex;align-items:center;gap:8px;
   background:rgba(15,16,18,.6);backdrop-filter:blur(5px);color:#fff;font-family:var(--display);font-weight:700;
   font-size:.7rem;text-transform:uppercase;letter-spacing:.11em;padding:8px 13px;border-radius:50px}
@@ -523,7 +523,7 @@ footer{background:var(--charcoal);color:rgba(255,255,255,.66);padding:64px 0 0;f
     <div class="showcase">
       <div class="showcase-video">
         <span class="sc-chip"><i></i> Before &amp; After</span>
-        <video src="https://d8j0ntlcm91z4.cloudfront.net/user_3ErzsncT9StOhbHWY9JvJRXxqn4/hf_20260611_125505_2a2c4ed1-20d3-4342-b258-24208d9216e0.mp4" autoplay muted loop playsinline preload="metadata" controls></video>
+        <video src="https://d8j0ntlcm91z4.cloudfront.net/user_3ErzsncT9StOhbHWY9JvJRXxqn4/hf_20260611_125505_2a2c4ed1-20d3-4342-b258-24208d9216e0.mp4" autoplay muted loop playsinline preload="auto" disablepictureinpicture></video>
       </div>
       <div class="showcase-text">
         <span class="sc-tag">Project spotlight</span>
@@ -912,10 +912,17 @@ document.getElementById('quoteForm').addEventListener('submit',e=>{
 /* floating button prefilled */
 document.getElementById('waFloat').href=`https://wa.me/${WHATSAPP}?text=Hi%20Lords%20Roofing%2C%20I%27d%20like%20a%20quote%20please.`;
 
-/* respect reduced motion for the showcase video */
-if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches){
-  document.querySelectorAll('.showcase-video video').forEach(v=>{v.removeAttribute('autoplay');v.removeAttribute('loop');v.removeAttribute('muted');try{v.pause();}catch(e){}});
-}
+/* keep showcase videos playing: muted autoplay, no controls, never pause */
+document.querySelectorAll('.showcase-video video').forEach(v=>{
+  v.muted=true;v.defaultMuted=true;
+  const play=()=>{const p=v.play();if(p&&p.catch)p.catch(()=>{});};
+  play();
+  ['loadeddata','canplay','stalled','pause'].forEach(ev=>v.addEventListener(ev,play));
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)play();}),{threshold:0}).observe(v);
+  }
+  document.addEventListener('visibilitychange',()=>{if(!document.hidden)play();});
+});
 /* year */
 document.getElementById('yr').textContent=new Date().getFullYear();
 </script>
