@@ -231,6 +231,8 @@ header.shrink .brand img{height:42px}
   gap:10px;color:var(--grey-l);text-align:center;padding:24px;border:1px dashed var(--line-2)}
 .about-photo .ph svg{width:40px;height:40px;stroke:var(--grey-l)}
 .about-photo img{width:100%;height:100%;object-fit:cover}
+.about-photo img.about-photo-inset{position:absolute;top:18px;right:18px;width:40%;height:auto;aspect-ratio:4/5;
+  object-fit:cover;border-radius:12px;border:4px solid #fff;box-shadow:var(--shadow-lg);z-index:2}
 .about-stat{position:absolute;left:20px;bottom:20px;background:#fff;border-radius:12px;padding:16px 20px;box-shadow:var(--shadow);z-index:2}
 .about-stat .big{font-family:var(--display);font-weight:900;font-size:2rem;color:var(--red);line-height:1}
 .about-stat .small{font-size:.82rem;color:var(--grey);font-weight:600;margin-top:3px}
@@ -622,11 +624,8 @@ footer{background:var(--charcoal);color:rgba(255,255,255,.66);padding:64px 0 0;f
   <div class="wrap">
     <div class="about-grid">
       <div class="about-photo">
-        <div class="ph">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-          <strong style="color:var(--ink-2);font-family:var(--display)">Photo of the team / owner</strong>
-          <small>Add a friendly photo here</small>
-        </div>
+        <img src="about.jpg" alt="The Lords Roofing &amp; Sons family team">
+        <img class="about-photo-inset" src="about-small.jpg" alt="Lords Roofing &amp; Sons on the job">
         <div class="about-stat"><div class="big">20+</div><div class="small">Years roofing Derbyshire</div></div>
       </div>
       <div>
