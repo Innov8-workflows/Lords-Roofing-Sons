@@ -107,6 +107,12 @@ header.shrink .brand img{height:42px}
 .hero h1 em{font-style:normal;color:var(--red);text-shadow:0 2px 30px rgba(216,0,10,.4)}
 .hero-sub{color:rgba(255,255,255,.9);font-size:clamp(1.02rem,1.6vw,1.22rem);max-width:52ch;margin-top:22px}
 .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+.hero-inner .wrap{display:flex;flex-direction:column;align-items:center;text-align:center}
+.hero-logo{display:block;width:min(600px,88vw);height:auto;margin:-10px auto 6px;
+  filter:drop-shadow(0 12px 38px rgba(0,0,0,.55))}
+.hero h1{max-width:18ch;margin-left:auto;margin-right:auto}
+.hero-sub{margin-left:auto;margin-right:auto}
+.hero-actions{justify-content:center}
 .hero-cap{position:absolute;z-index:3;right:26px;bottom:64px;display:flex;align-items:center;gap:9px;
   background:rgba(15,16,18,.5);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(6px);
   color:#fff;font-size:.82rem;font-weight:600;padding:8px 14px;border-radius:50px}
@@ -438,6 +444,7 @@ footer{background:var(--charcoal);color:rgba(255,255,255,.66);padding:64px 0 0;f
   <div class="hero-inner">
     <div class="wrap">
       <span class="hero-badge"><span class="dot"></span> Family run &middot; Over 20 years in Chesterfield</span>
+      <img class="hero-logo" src="logo-transparent.png" alt="Lords Roofing &amp; Sons LTD">
       <h1>Chesterfield's trusted <em>family roofers</em></h1>
       <p class="hero-sub">From a slipped tile to a full re-roof, fast, friendly and done properly. All work guaranteed, with hundreds of happy customers across Derbyshire.</p>
       <div class="hero-actions">
