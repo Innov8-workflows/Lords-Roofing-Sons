@@ -371,6 +371,30 @@ footer{background:var(--charcoal);color:rgba(255,255,255,.66);padding:64px 0 0;f
 .sc-specs svg{width:20px;height:20px;stroke:var(--red);flex-shrink:0}
 .sc-specs b{font-family:var(--display);font-weight:700}
 @media(max-width:880px){.showcase{grid-template-columns:1fr;gap:28px}}
+/* ===================== BEFORE / AFTER CASES ===================== */
+.cases{display:flex;flex-direction:column;gap:64px;margin-top:60px;padding-top:56px;border-top:1px solid var(--line)}
+.case{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}
+.case-media{display:flex;justify-content:flex-start}
+.case-frame{position:relative;width:100%;max-width:560px;aspect-ratio:4/3;border-radius:var(--radius);overflow:hidden;
+  background:#111;box-shadow:var(--shadow-lg);transform:rotate(-1.4deg);transition:transform .45s ease}
+.case:hover .case-frame{transform:rotate(0)}
+.case-frame video{width:100%;height:100%;object-fit:cover;display:block;background:#111;pointer-events:none}
+.case-badge{position:absolute;top:14px;left:14px;z-index:2;display:inline-flex;align-items:center;gap:7px;
+  background:var(--red);color:#fff;font-family:var(--display);font-weight:700;font-size:.7rem;letter-spacing:.08em;
+  text-transform:uppercase;padding:7px 13px;border-radius:999px;box-shadow:var(--shadow)}
+.case-body .eyebrow{display:inline-block;margin-bottom:12px}
+.case-body h3{font-size:clamp(1.5rem,2.7vw,2rem);font-weight:800;margin-bottom:14px;letter-spacing:-.01em;line-height:1.14;color:var(--ink)}
+.case-body p{color:var(--grey);font-size:1.04rem;line-height:1.6;margin:0 0 18px;max-width:52ch}
+.case-loc{display:inline-flex;align-items:center;gap:8px;color:var(--red);font-family:var(--display);font-weight:700;font-size:.92rem}
+.case-loc svg{width:17px;height:17px;stroke:var(--red);fill:none;flex-shrink:0}
+.case:nth-child(even) .case-media{order:2;justify-content:flex-end}
+.case:nth-child(even) .case-frame{transform:rotate(1.4deg)}
+@media(max-width:880px){
+  .cases{gap:44px;margin-top:44px;padding-top:40px}
+  .case{grid-template-columns:1fr;gap:22px;max-width:540px;margin:0 auto}
+  .case-media,.case:nth-child(even) .case-media{order:-1;justify-content:center}
+  .case-frame,.case:nth-child(even) .case-frame{transform:none;max-width:100%}
+}
 </style>
 </head>
 <body>
@@ -549,6 +573,43 @@ footer{background:var(--charcoal);color:rgba(255,255,255,.66);padding:64px 0 0;f
         </ul>
         <a class="btn btn-red btn-lg" href="#contact">Get a roof like this</a>
       </div>
+    </div>
+
+    <!-- Alternating before/after video cases -->
+    <div class="cases">
+
+      <!-- Fibreglass flat roof — media left -->
+      <article class="case">
+        <div class="case-media">
+          <div class="case-frame">
+            <span class="case-badge">Before &rarr; After</span>
+            <video src="b-a-2-web.mp4" autoplay muted loop playsinline preload="metadata" disablepictureinpicture></video>
+          </div>
+        </div>
+        <div class="case-body">
+          <span class="eyebrow">Fibreglass Flat Roof</span>
+          <h3>A flat roof sealed for good</h3>
+          <p>This tired flat roof was stripped right back to fresh timber decking, then finished in seamless grey GRP fibreglass with clean black trims. No felt laps to lift and no joints to fail, just one solid, watertight surface built to shrug off the Derbyshire weather for decades.</p>
+          <span class="case-loc"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> Chesterfield</span>
+        </div>
+      </article>
+
+      <!-- Full re-roof — media right -->
+      <article class="case">
+        <div class="case-media">
+          <div class="case-frame">
+            <span class="case-badge">Before &rarr; After</span>
+            <video src="b-a-3-web.mp4" autoplay muted loop playsinline preload="metadata" disablepictureinpicture></video>
+          </div>
+        </div>
+        <div class="case-body">
+          <span class="eyebrow">Full Re-Roof</span>
+          <h3>From mossy and worn to brand new</h3>
+          <p>Decades of moss and blistered old tiles came off, and the whole roof was re-covered with fresh interlocking tiles over a breathable membrane and new battens. New valley leadwork, a re-bedded ridge and a smart skylight finish it off, leaving a clean, uniform roof ready for the next generation.</p>
+          <span class="case-loc"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> Dronfield</span>
+        </div>
+      </article>
+
     </div>
   </div>
 </section>
